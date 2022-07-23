@@ -16,7 +16,47 @@ a {
   padding: 10px;
 }
 
-.btn {
+.poll-image {
+  width: 200px;
+  height: 200px;
+  display: block;
+  margin: 10px auto;
+}
+.login-form {
+  /* margin: 50px; */
+}
+
+.login-input {
+  display: block;
+  margin: 20px auto;
+  padding: 10px;
+  width: 80%;
+}
+
+.login-btn {
+  cursor: pointer;
+  margin: auto;
+  border: 1px solid rgba(0, 0, 0, 0.29);
+  padding: 10px;
+  position: relative;
+  left: 45%;
+  width: 150px;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.log-btn {
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  margin: 5px;
+}
+
+/* .btn {
   text-transform: uppercase;
   margin: 35px auto;
   padding: 10px;
@@ -26,7 +66,7 @@ a {
   font-size: 16px;
   width: 250px;
   position: relative;
-}
+} */
 
 .btn:hover {
   border-color: rgba(0, 0, 0, 0.5);
@@ -66,6 +106,7 @@ li {
   list-style-type: none;
   padding: 10px;
   text-decoration: none;
+  cursor: pointer;
 }
 
 .avatar {
@@ -132,11 +173,6 @@ li {
   padding: 0;
   color: #969696;
   cursor: pointer;
-}
-
-.heart-button {
-  background: transparent;
-  border: none;
 }
 
 .new-tweet {
