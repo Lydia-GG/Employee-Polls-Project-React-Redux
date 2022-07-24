@@ -7,6 +7,8 @@ import Nav from './Nav';
 import NewPollPage from './NewPollPage';
 import PollCard from './PollCard';
 import PollPage from './PollPage';
+import Leaderboard from './Leaderboard';
+import { Routes, Route } from 'react-router-dom';
 
 function App(props) {
   console.log(props);
@@ -14,7 +16,19 @@ function App(props) {
     props.dispatch(handleInitialData());
   }, []);
 
-  return <div>{props.loading === true ? null : <Dashboard />}</div>;
+  return (
+    <div>
+      <Nav />
+      <Routes>
+        {/* {props.loading === true ? null : <Dashboard />} */}
+        <Route path="/login" element={<Login />}></Route>
+        <Route path="/" exact element={<Dashboard />}></Route>
+        <Route path="/leaderboard" element={<Leaderboard />}></Route>
+        <Route path="/new" element={<NewPollPage />}></Route>
+        <Route path="/poll/:id" element={<PollPage />}></Route>
+      </Routes>
+    </div>
+  );
 }
 
 const mapStateToProps = ({ authedUser }) => ({ loading: authedUser === null });
