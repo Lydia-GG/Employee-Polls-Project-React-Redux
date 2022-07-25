@@ -1,6 +1,7 @@
 let users = {
   sarahedo: {
     id: 'sarahedo',
+    password: '123456',
     name: 'Sarah Edo',
     avatarURL: 'https://tylermcginnis.com/would-you-rather/sarah.jpg',
     answers: {
@@ -13,6 +14,7 @@ let users = {
   },
   tylermcginnis: {
     id: 'tylermcginnis',
+    password: '123456',
     name: 'Tyler McGinnis',
     avatarURL: 'https://tylermcginnis.com/would-you-rather/tyler.jpg',
     answers: {
@@ -23,6 +25,7 @@ let users = {
   },
   johndoe: {
     id: 'johndoe',
+    password: '123456',
     name: 'John Doe',
     avatarURL: 'https://tylermcginnis.com/would-you-rather/dan.jpg',
     answers: {

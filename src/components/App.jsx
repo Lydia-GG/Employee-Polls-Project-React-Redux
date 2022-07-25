@@ -11,26 +11,34 @@ import Leaderboard from './Leaderboard';
 import { Routes, Route } from 'react-router-dom';
 
 function App(props) {
-  console.log(props);
+  console.log(props.isLogged);
   useEffect(() => {
     props.dispatch(handleInitialData());
   }, []);
 
   return (
     <div>
-      <Nav />
-      <Routes>
-        {/* {props.loading === true ? null : <Dashboard />} */}
-        <Route path="/login" element={<Login />}></Route>
-        <Route path="/" exact element={<Dashboard />}></Route>
-        <Route path="/leaderboard" element={<Leaderboard />}></Route>
-        <Route path="/new" element={<NewPollPage />}></Route>
-        <Route path="/poll/:id" element={<PollPage />}></Route>
-      </Routes>
+      {props.authedUser ? (
+        <>
+          <Nav />
+          <Routes>
+            {/* {props.loading === true ? null : <Dashboard />} */}
+            <Route path="/login" element={<Login />}></Route>
+            <Route path="/" exact element={<Dashboard />}></Route>
+            <Route path="/leaderboard" element={<Leaderboard />}></Route>
+            <Route path="/new" element={<NewPollPage />}></Route>
+            <Route path="/poll/:id" element={<PollPage />}></Route>
+          </Routes>
+        </>
+      ) : (
+        <Login />
+      )}
     </div>
   );
 }
 
-const mapStateToProps = ({ authedUser }) => ({ loading: authedUser === null });
+const mapStateToProps = ({ authedUser }) => ({
+  authedUser,
+});
 
 export default connect(mapStateToProps)(App);

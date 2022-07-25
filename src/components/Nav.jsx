@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-const Nav = () => {
+const Nav = (props) => {
   return (
     <nav className="container nav">
       <div>
@@ -18,12 +19,20 @@ const Nav = () => {
         </ul>
       </div>
       <div className="">
-        <img className="avatar" alt="image" src="" />
-        <button className="log-btn">username</button>
+        <img
+          className="avatar"
+          alt={props.authedUser.name}
+          src={props.authedUser.avatarURL}
+        />
+        <button className="log-btn">{props.authedUser.id}</button>
         <button className="log-btn">logout</button>
       </div>
     </nav>
   );
 };
 
-export default Nav;
+const mapStateToProps = ({ authedUser }) => ({
+  authedUser,
+});
+
+export default connect(mapStateToProps)(Nav);
