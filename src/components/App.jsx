@@ -11,7 +11,6 @@ import Leaderboard from './Leaderboard';
 import { Routes, Route } from 'react-router-dom';
 
 function App(props) {
-  console.log(props.isLogged);
   useEffect(() => {
     props.dispatch(handleInitialData());
   }, []);
@@ -22,7 +21,6 @@ function App(props) {
         <>
           <Nav />
           <Routes>
-            {/* {props.loading === true ? null : <Dashboard />} */}
             <Route path="/login" element={<Login />}></Route>
             <Route path="/" exact element={<Dashboard />}></Route>
             <Route path="/leaderboard" element={<Leaderboard />}></Route>

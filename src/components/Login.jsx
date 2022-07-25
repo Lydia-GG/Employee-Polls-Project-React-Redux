@@ -1,17 +1,20 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { handleLogin } from '../redux/actions/authedUser';
+import { useNavigate } from 'react-router-dom';
 
 const Login = (props) => {
+  const navigate = useNavigate();
   console.log(props);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     props.dispatch(handleLogin(username, password));
+    navigate('/');
   };
+
   return (
     <div>
       <img className="poll-image" />
