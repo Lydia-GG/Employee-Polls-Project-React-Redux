@@ -19,8 +19,10 @@ const Dashboard = (props) => {
   );
 };
 
-const mapStateToProps = ({ questions }) => ({
+const mapStateToProps = ({ authedUser, questions, users }) => ({
+  authedUser,
   questions: Object.values(questions).sort((a, b) => b.timestamp - a.timestamp),
+  users,
 });
 
 export default connect(mapStateToProps)(Dashboard);
