@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { formatDate } from '../util/helpers';
+import { Link } from 'react-router-dom';
 
 const PollCard = ({ question }) => {
   return (
@@ -8,7 +9,7 @@ const PollCard = ({ question }) => {
       <div>
         <p>{question.author}</p>
         <p>{formatDate(question.timestamp)}</p>
-        <button>Show</button>
+        <Link to={`/poll/${question.id}`}>Show</Link>
       </div>
     </div>
   );
