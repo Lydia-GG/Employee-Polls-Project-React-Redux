@@ -3,7 +3,6 @@ import { useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 const PollPage = ({ question, user }) => {
-  console.log(question);
   const { avatarURL } = user;
   const { author, optionOne, optionTwo } = question;
   return (

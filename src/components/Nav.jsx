@@ -1,8 +1,15 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { handleLogout } from '../redux/actions/authedUser';
 
 const Nav = (props) => {
+  const navigate = useNavigate();
+
+  const logout = () => {
+    props.dispatch(handleLogout());
+    navigate('/login');
+  };
   return (
     <nav className="container nav">
       <div>
@@ -25,7 +32,9 @@ const Nav = (props) => {
           src={props.authedUser.avatarURL}
         />
         <button className="log-btn">{props.authedUser.id}</button>
-        <button className="log-btn">logout</button>
+        <button className="log-btn" onClick={logout}>
+          logout
+        </button>
       </div>
     </nav>
   );

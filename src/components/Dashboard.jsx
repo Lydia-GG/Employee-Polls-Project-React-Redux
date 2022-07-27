@@ -3,18 +3,48 @@ import { connect } from 'react-redux';
 import PollCard from './PollCard';
 
 const Dashboard = (props) => {
-  console.log(props);
+  const doneQuestions = () => {
+    return props.questions.filter(
+      (question) =>
+        question.optionOne.votes.includes(props.authedUser.id) ||
+        question.optionTwo.votes.includes(props.authedUser.id)
+    );
+  };
+  const answeredQuestions = doneQuestions();
+  const newQuestions = () => {
+    return props.questions.filter(
+      (question) =>
+        !question.optionOne.votes.includes(props.authedUser.id) &&
+        !question.optionTwo.votes.includes(props.authedUser.id)
+    );
+  };
+  const unAnsweredQuestions = newQuestions();
+  console.log(unAnsweredQuestions);
 
   return (
     <div className="center">
       <h3>polls list</h3>
-      <ul>
-        {props.questions.map((question) => (
-          <li key={question.id}>
-            <PollCard question={question} />
-          </li>
-        ))}
-      </ul>
+
+      <div className="poll-list">
+        <h4>New Polls</h4>
+        <ul>
+          {unAnsweredQuestions.map((question) => (
+            <li key={question.id}>
+              <PollCard question={question} />
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div className="poll-list">
+        <h4>Done</h4>
+        <ul>
+          {answeredQuestions.map((question) => (
+            <li key={question.id}>
+              <PollCard question={question} />
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };

@@ -191,6 +191,11 @@ li {
   height: 100px;
 }
 
+.poll-list {
+  border: 1px solid black;
+  margin: 10px auto;
+}
+
 .tweet-length {
   text-align: right;
   margin-top: 10px;
