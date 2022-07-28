@@ -3,22 +3,18 @@ import { connect } from 'react-redux';
 import PollCard from './PollCard';
 
 const Dashboard = (props) => {
-  const doneQuestions = () => {
-    return props.questions.filter(
-      (question) =>
-        question.optionOne.votes.includes(props.authedUser.id) ||
-        question.optionTwo.votes.includes(props.authedUser.id)
-    );
-  };
-  const answeredQuestions = doneQuestions();
-  const newQuestions = () => {
-    return props.questions.filter(
-      (question) =>
-        !question.optionOne.votes.includes(props.authedUser.id) &&
-        !question.optionTwo.votes.includes(props.authedUser.id)
-    );
-  };
-  const unAnsweredQuestions = newQuestions();
+  const answeredQuestions = props.questions.filter(
+    (question) =>
+      question.optionOne.votes.includes(props.authedUser.id) ||
+      question.optionTwo.votes.includes(props.authedUser.id)
+  );
+  console.log(answeredQuestions);
+
+  const unAnsweredQuestions = props.questions.filter(
+    (question) =>
+      !question.optionOne.votes.includes(props.authedUser.id) &&
+      !question.optionTwo.votes.includes(props.authedUser.id)
+  );
   console.log(unAnsweredQuestions);
 
   return (
