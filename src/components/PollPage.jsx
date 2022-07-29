@@ -1,10 +1,23 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { handleAddAnswer } from '../redux/actions/questions';
 
-const PollPage = ({ question, user }) => {
-  const { avatarURL } = user;
-  const { author, optionOne, optionTwo } = question;
+const PollPage = (props) => {
+  const { avatarURL } = props.user;
+  const { author, optionOne, optionTwo, id } = props.question;
+
+  const handleOptionOneClick = (e) => {
+    e.preventDefault();
+
+    props.dispatch(handleAddAnswer(id, 'optionOne'));
+  };
+  const handleOptionTwoClick = (e) => {
+    e.preventDefault();
+    props.dispatch(handleAddAnswer(id, 'optionTwo'));
+  };
+  // const answeredPoll = () => {};
+
   return (
     <div className="container">
       <div>
@@ -15,23 +28,24 @@ const PollPage = ({ question, user }) => {
         <h3>Would You Rather</h3>
         <div>
           <span>{optionOne.text}</span>
-          <button>Click</button>
+          <button onClick={handleOptionOneClick}>Click</button>
         </div>
         <div>
           <span>{optionTwo.text}</span>
-          <button>Click</button>
+          <button onClick={handleOptionTwoClick}>Click</button>
         </div>
       </div>
     </div>
   );
 };
 
-const mapStateToProps = ({ questions, users }) => {
+const mapStateToProps = ({ authedUser, questions, users }) => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const { id } = useParams();
   const question = questions[id];
   const user = Object.values(users).find((user) => user.id === question.author);
   return {
+    authedUser,
     question,
     user,
   };
