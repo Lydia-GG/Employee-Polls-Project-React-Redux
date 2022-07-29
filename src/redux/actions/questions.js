@@ -1,5 +1,4 @@
-// import { saveQuestion, saveQuestionAnswer } from '../../util/api';
-import { _saveQuestion, _saveQuestionAnswer } from '../../util/_DATA';
+import { saveQuestion, saveQuestionAnswer } from '../../util/api';
 import { userAddQuestion, userAddAnswer } from './users';
 
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS';
@@ -31,23 +30,24 @@ function addAnswer({ authedUser, qid, answer }) {
 
 export function handleAddQuestion(optionOneText, optionTwoText) {
   return (dispatch, getState) => {
-    const { authedUser } = getState();
-    return _saveQuestion({
+    let { authedUser } = getState();
+    authedUser = authedUser.id;
+
+    return saveQuestion({
       optionOneText,
       optionTwoText,
-      author: authedUser.id,
+      author: authedUser,
     }).then((question) => {
       dispatch(addQuestion(question));
-      dispatch(
-        userAddQuestion({ authedUser: authedUser.id, qid: question.id })
-      );
+      dispatch(userAddQuestion({ authedUser: authedUser, qid: question.id }));
     });
   };
 }
-export function handleAddAnswer({ authedUser, qid, answer }) {
-  return (dispatch) => {
-    // const { authedUser } = getState();
-    return _saveQuestionAnswer({ authedUser, qid, answer }).then(() => {
+export function handleAddAnswer(qid, answer) {
+  return (dispatch, getState) => {
+    let { authedUser } = getState();
+    authedUser = authedUser.id;
+    return saveQuestionAnswer({ authedUser, qid, answer }).then(() => {
       dispatch(addAnswer({ authedUser, qid, answer }));
       dispatch(userAddAnswer({ authedUser, qid, answer }));
     });
