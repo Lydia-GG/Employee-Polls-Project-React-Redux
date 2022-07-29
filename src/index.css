@@ -202,3 +202,7 @@ li {
   font-size: 20px;
   color: #c3392a;
 }
+
+.answeredOption {
+  background-color: antiquewhite;
+}
