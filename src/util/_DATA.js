@@ -174,6 +174,9 @@ export function _saveQuestion(question) {
 
       res(formattedQuestion);
     }, 1000);
+    if (!question.optionOneText || !question.optionTwoText || !authedUser) {
+      rej('Please provide all fields');
+    }
   });
 }
 
@@ -204,5 +207,8 @@ export function _saveQuestionAnswer({ authedUser, qid, answer }) {
 
       res();
     }, 500);
+    if (!authedUser || !qid || !answer) {
+      rej('Please provide all fields');
+    }
   });
 }

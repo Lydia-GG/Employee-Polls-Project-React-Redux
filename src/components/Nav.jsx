@@ -21,7 +21,7 @@ const Nav = (props) => {
             <Link to="/leaderboard">Leaderboard</Link>
           </li>
           <li>
-            <Link to="/new">New Poll</Link>
+            <Link to="/add">New Poll</Link>
           </li>
         </ul>
       </div>
