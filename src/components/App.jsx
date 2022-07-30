@@ -11,6 +11,7 @@ import Leaderboard from './Leaderboard';
 import { Routes, Route } from 'react-router-dom';
 
 function App(props) {
+  // comment : todo Whenever the user types something in the address bar, the user is asked to log in before the requested page is shown
   useEffect(() => {
     props.dispatch(handleInitialData());
   }, []);
@@ -24,7 +25,7 @@ function App(props) {
             <Route path="/login" element={<Login />}></Route>
             <Route path="/" exact element={<Dashboard />}></Route>
             <Route path="/leaderboard" element={<Leaderboard />}></Route>
-            <Route path="/new" element={<NewPollPage />}></Route>
+            <Route path="/add" element={<NewPollPage />}></Route>
             <Route path="/poll/:id" element={<PollPage />}></Route>
           </Routes>
         </>

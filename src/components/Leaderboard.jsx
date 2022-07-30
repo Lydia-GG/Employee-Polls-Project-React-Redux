@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 const Leaderboard = (props) => {
+  //comment todo : Users are ordered in descending order based on the sum of the number of questions they’ve answered and the number of questions they’ve asked.
   return (
     <div>
       <table>

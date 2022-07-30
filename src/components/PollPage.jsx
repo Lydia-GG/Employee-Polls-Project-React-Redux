@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { handleAddAnswer } from '../redux/actions/questions';
 
 const PollPage = (props) => {
+  //comment : todo the number of people who voted for that option;
   const navigate = useNavigate();
   const { avatarURL } = props.user;
   const { author, optionOne, optionTwo, id } = props.question;
