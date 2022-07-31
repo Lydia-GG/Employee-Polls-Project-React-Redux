@@ -18,7 +18,7 @@ const Login = (props) => {
   return (
     <div>
       <h2>Employee Polls</h2>
-      <img className="poll-image" src={login} />
+      <img className="poll-image" src={login} alt="login" />
       <form className="login-form" onSubmit={handleSubmit}>
         <h3>Log In</h3>
         <label>User</label>

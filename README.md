@@ -1,6 +1,3 @@
-TODO :  
-1-// comment : todo Whenever the user types something in the address bar, the user is asked to log in before the requested page is shown
-
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

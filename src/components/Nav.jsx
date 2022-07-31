@@ -3,11 +3,11 @@ import { Link, useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { handleLogout } from '../redux/actions/authedUser';
 
-const Nav = (props) => {
+const Nav = ({ authedUser, dispatch }) => {
   const navigate = useNavigate();
-
+  const { id, name, avatarURL } = authedUser;
   const logout = () => {
-    props.dispatch(handleLogout());
+    dispatch(handleLogout());
     navigate('/login');
   };
   return (
@@ -27,12 +27,8 @@ const Nav = (props) => {
           </ul>
         </div>
         <div className="right">
-          <img
-            className="avatar"
-            alt={props.authedUser.name}
-            src={props.authedUser.avatarURL}
-          />
-          <button className="log-btn">{props.authedUser.id}</button>
+          <img className="avatar" alt={name} src={avatarURL} />
+          <button className="log-btn">{id}</button>
           <button className="log-btn" onClick={logout}>
             logout
           </button>
