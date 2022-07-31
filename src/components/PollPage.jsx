@@ -40,20 +40,34 @@ const PollPage = (props) => {
         <img src={avatarURL} alt={author} />
       </div>
       <h3>Would You Rather</h3>
-      <div className='info'>
-        <div className='info-element'>
+      <div className="info">
+        <div className="info-element">
           <div className={answeredOptionOne ? 'answeredOption' : ''}>
-            <p className='sector'>{optionOne.text}</p>
-            <p className='percentage'><span className='votes'>Votes: 1/5 </span>{optionOnePercentage.toFixed(2)}% </p>
+            <p className="sector">{optionOne.text}</p>
+            {totalVotes > 0 && (
+              <p className="percentage">
+                <span className="votes">
+                  Votes: {optionOne.votes.length}/{totalVotes}{' '}
+                </span>
+                {optionOnePercentage.toFixed(2)}%{' '}
+              </p>
+            )}
           </div>
           <button onClick={handleOptionOneClick} disabled={answeredPoll}>
             Click
           </button>
         </div>
-        <div className='info-element'>
+        <div className="info-element">
           <div className={answeredOptionTwo ? 'answeredOption' : ''}>
-            <p className='sector'>{optionTwo.text}</p>
-            <p className='percentage'><span className='votes'>Votes: 1/5 </span>{optionTwoPercentage.toFixed(2)}%</p>
+            <p className="sector">{optionTwo.text}</p>
+            {totalVotes > 0 && (
+              <p className="percentage">
+                <span className="votes">
+                  Votes: {optionTwoTotalVotes}/{totalVotes}{' '}
+                </span>
+                {optionTwoPercentage.toFixed(2)}%
+              </p>
+            )}
           </div>
           <button onClick={handleOptionTwoClick} disabled={answeredPoll}>
             Click
