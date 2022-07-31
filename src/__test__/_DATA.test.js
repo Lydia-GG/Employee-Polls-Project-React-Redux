@@ -1,4 +1,4 @@
-import { _saveQuestion, _saveQuestionAnswer } from './_DATA';
+import { _saveQuestion, _saveQuestionAnswer } from '../util/_DATA';
 
 //At least one test must call the toMatchSnapshot() function from jest. Doing this will generate a folder called snapshots where the snapshot will be stored.
 
