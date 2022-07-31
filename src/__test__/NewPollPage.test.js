@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import store from '../redux/store';
 import { MemoryRouter } from 'react-router-dom';
 import NewPollPage from '../components/NewPollPage';
-
+import Button from '../components/Button';
 describe('NewPollPage', () => {
   it('inputs should be initially empty', () => {
     render(
@@ -17,11 +17,9 @@ describe('NewPollPage', () => {
     );
     const optionOneInput = screen.getAllByRole('textbox')[0];
     const optionTwoInput = screen.getAllByRole('textbox')[1];
-    const submitBtn = screen.getByTestId('add-test');
 
     expect(optionOneInput.value).toBe('');
     expect(optionTwoInput.value).toBe('');
-    expect(submitBtn).toBeDisabled();
   });
 
   it('Correctly changes input fields value', () => {
@@ -43,6 +41,7 @@ describe('NewPollPage', () => {
     expect(optionTwoInput.value).toBe('Travel');
     expect(submitBtn).not.toBeDisabled();
   });
+
   it('button disabled when fill only one input', () => {
     render(
       <MemoryRouter>
@@ -53,6 +52,20 @@ describe('NewPollPage', () => {
     );
     const optionOneInput = screen.getAllByRole('textbox')[0];
     fireEvent.change(optionOneInput, { target: { value: 'Sleep' } });
+    const submitBtn = screen.getByTestId('add-test');
+    expect(submitBtn).toBeDisabled();
+  });
+
+  it('button disabled when with empty inputs', () => {
+    render(
+      <MemoryRouter>
+        <Provider store={store}>
+          <NewPollPage />
+        </Provider>
+      </MemoryRouter>
+    );
+    const optionOneInput = screen.getAllByRole('textbox')[0];
+    fireEvent.change(optionOneInput, { target: { value: '' } });
     const submitBtn = screen.getByTestId('add-test');
     expect(submitBtn).toBeDisabled();
   });

@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { handleAddQuestion } from '../redux/actions/questions';
+import Button from './Button';
+import Input from './Input';
 
 const NewPollPage = ({ dispatch }) => {
   const [optionOne, setOptionOne] = useState('');
@@ -22,7 +24,8 @@ const NewPollPage = ({ dispatch }) => {
       <form>
         <div>
           <h5>First Question</h5>
-          <input
+
+          <Input
             type="text"
             placeholder="Question One"
             value={optionOne}
@@ -31,20 +34,21 @@ const NewPollPage = ({ dispatch }) => {
         </div>
         <div>
           <h5>Second Question</h5>
-          <input
+
+          <Input
             type="text"
             placeholder="Question Two"
             value={optionTwo}
             onChange={(e) => setOptionTwo(e.target.value)}
           />
         </div>
-        <button
+
+        <Button
           data-testid="add-test"
           onClick={handleSubmit}
           disabled={disabled}
-        >
-          Submit
-        </button>
+          text="Submit"
+        />
       </form>
     </div>
   );

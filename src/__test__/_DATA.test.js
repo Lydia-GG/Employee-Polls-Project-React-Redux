@@ -1,6 +1,4 @@
-import { _saveQuestion, _saveQuestionAnswer } from './_DATA';
-
-//At least one unit test must use the render method from @testing-library/react to render one of your React components. The unit test should then perform some actions on the component using fireEvent such as fireEvent.click() or fireEvent.change(). After calling fireEvent, call the expect() method from jest to verify that a change occurred in the UI after the event was fired.
+import { _saveQuestion, _saveQuestionAnswer } from '../util/_DATA';
 
 describe('Data', () => {
   describe('_saveQuestion', () => {
