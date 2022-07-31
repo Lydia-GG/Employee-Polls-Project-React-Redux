@@ -15,12 +15,12 @@ const NewPollPage = ({ dispatch }) => {
     navigate('/');
   };
   return (
-    <div className="container">
+    <div className="new-poll container">
       <h2>Would You Rather</h2>
-      <h3>Create You Own Poll</h3>
+      <h4>Create You Own Poll</h4>
       <form>
         <div>
-          <h4>First Question</h4>
+          <h5>First Question</h5>
           <input
             type="text"
             placeholder="Question One"
@@ -29,7 +29,7 @@ const NewPollPage = ({ dispatch }) => {
           />
         </div>
         <div>
-          <h4>Second Question</h4>
+          <h5>Second Question</h5>
           <input
             type="text"
             placeholder="Question Two"

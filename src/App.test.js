@@ -1,3 +1,4 @@
+/* eslint-disable testing-library/no-debugging-utils */
 /* eslint-disable testing-library/render-result-naming-convention */
 import { render, screen } from '@testing-library/react';
 import App from './components/App';

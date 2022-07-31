@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { handleAddAnswer } from '../redux/actions/questions';
 
 const PollPage = (props) => {
-  //comment : todo the number of people who voted for that option;
   const navigate = useNavigate();
   const { avatarURL } = props.user;
   const { author, optionOne, optionTwo, id } = props.question;
@@ -35,26 +34,26 @@ const PollPage = (props) => {
   };
 
   return (
-    <div className="container">
+    <div className="poll-page container">
       <div>
-        <h3>Poll By:{author}</h3>
+        <h2>Poll by: {author}</h2>
         <img src={avatarURL} alt={author} />
       </div>
-      <div>
-        <h3>Would You Rather</h3>
-        <div>
+      <h3>Would You Rather</h3>
+      <div className='info'>
+        <div className='info-element'>
           <div className={answeredOptionOne ? 'answeredOption' : ''}>
-            <p>{optionOne.text}</p>
-            <p>{optionOnePercentage.toFixed(2)}%</p>
+            <p className='sector'>{optionOne.text}</p>
+            <p className='percentage'><span className='votes'>Votes: 1/5 </span>{optionOnePercentage.toFixed(2)}% </p>
           </div>
           <button onClick={handleOptionOneClick} disabled={answeredPoll}>
             Click
           </button>
         </div>
-        <div>
+        <div className='info-element'>
           <div className={answeredOptionTwo ? 'answeredOption' : ''}>
-            <p>{optionTwo.text}</p>
-            <p>{optionTwoPercentage.toFixed(2)}%</p>
+            <p className='sector'>{optionTwo.text}</p>
+            <p className='percentage'><span className='votes'>Votes: 1/5 </span>{optionTwoPercentage.toFixed(2)}%</p>
           </div>
           <button onClick={handleOptionTwoClick} disabled={answeredPoll}>
             Click

@@ -18,11 +18,11 @@ const Dashboard = (props) => {
   console.log(unAnsweredQuestions);
 
   return (
-    <div className="center">
-      <h3>polls list</h3>
+    <div className="dashpoard-page center">
+      <h1>Polls List</h1>
 
       <div className="poll-list">
-        <h4>New Polls</h4>
+        <h2 className='poll-header'>New Polls</h2>
         <ul>
           {unAnsweredQuestions.map((question) => (
             <li key={question.id}>
@@ -32,7 +32,7 @@ const Dashboard = (props) => {
         </ul>
       </div>
       <div className="poll-list">
-        <h4>Done</h4>
+        <h2 className='poll-header'>Done</h2>
         <ul>
           {answeredQuestions.map((question) => (
             <li key={question.id}>

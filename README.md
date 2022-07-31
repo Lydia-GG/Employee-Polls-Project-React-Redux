@@ -1,3 +1,8 @@
+TODO :  
+1-// comment : todo Whenever the user types something in the address bar, the user is asked to log in before the requested page is shown
+2- //comment todo : Users are ordered in descending order based on the sum of the number of questions they’ve answered and the number of questions they’ve asked.
+3- //comment : todo the number of people who voted for that option;
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
