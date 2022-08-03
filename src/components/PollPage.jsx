@@ -2,7 +2,6 @@ import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { handleAddAnswer } from '../redux/actions/questions';
-import Button from './Button';
 
 const PollPage = (props) => {
   const navigate = useNavigate();
@@ -54,11 +53,9 @@ const PollPage = (props) => {
               </p>
             )}
           </div>
-          <Button
-            onClick={handleOptionOneClick}
-            disabled={answeredPoll}
-            text="Click"
-          />
+          <button onClick={handleOptionOneClick} disabled={answeredPoll}>
+            Click
+          </button>
         </div>
         <div className="info-element">
           <div className={answeredOptionTwo ? 'answeredOption' : ''}>
@@ -72,11 +69,9 @@ const PollPage = (props) => {
               </p>
             )}
           </div>
-          <Button
-            onClick={handleOptionTwoClick}
-            disabled={answeredPoll}
-            text="Click"
-          />
+          <button onClick={handleOptionTwoClick} disabled={answeredPoll}>
+            Click
+          </button>
         </div>
       </div>
     </div>

@@ -2,15 +2,12 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { handleAddQuestion } from '../redux/actions/questions';
-import Button from './Button';
-import Input from './Input';
 
 const NewPollPage = ({ dispatch }) => {
+  // console.log(authedUser);
   const [optionOne, setOptionOne] = useState('');
   const [optionTwo, setOptionTwo] = useState('');
   const navigate = useNavigate();
-
-  const disabled = optionOne.length === 0 || optionTwo.length === 0;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -24,8 +21,7 @@ const NewPollPage = ({ dispatch }) => {
       <form>
         <div>
           <h5>First Question</h5>
-
-          <Input
+          <input
             type="text"
             placeholder="Question One"
             value={optionOne}
@@ -34,21 +30,14 @@ const NewPollPage = ({ dispatch }) => {
         </div>
         <div>
           <h5>Second Question</h5>
-
-          <Input
+          <input
             type="text"
             placeholder="Question Two"
             value={optionTwo}
             onChange={(e) => setOptionTwo(e.target.value)}
           />
         </div>
-
-        <Button
-          data-testid="add-test"
-          onClick={handleSubmit}
-          disabled={disabled}
-          text="Submit"
-        />
+        <button onClick={handleSubmit}>Submit</button>
       </form>
     </div>
   );

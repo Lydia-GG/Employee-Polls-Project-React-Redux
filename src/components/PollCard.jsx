@@ -6,14 +6,12 @@ import { Link } from 'react-router-dom';
 const PollCard = ({ question }) => {
   return (
     <div className="tweet">
-      <div className="tInfo">
+      <div className='tInfo'>
         <h3>{question.author}</h3>
-        <p className="timestamp">{formatDate(question.timestamp)}</p>
+        <p className='timestamp'>{formatDate(question.timestamp)}</p>
       </div>
-      <hr />
-      <Link to={`/poll/${question.id}`} className="show">
-        Show
-      </Link>
+      <hr/>
+      <Link to={`/poll/${question.id}`} className='show'>Show</Link>
     </div>
   );
 };
