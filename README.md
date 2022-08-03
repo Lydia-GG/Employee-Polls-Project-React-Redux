@@ -2,8 +2,6 @@
 
 Employee Polls Project a part of Software Engineer Nanodegree at Udacity. The employee can create polls and give answers to polls. you can see the result of each survey. and there is a board displaying descendingly the interactivity for every employee.
 
-### The rendered output looks like this
-
 ![employee1](https://user-images.githubusercontent.com/67834807/182600631-9dda714c-a3d6-4601-962b-4e650fa20604.png)
 
 ## Available Scripts
