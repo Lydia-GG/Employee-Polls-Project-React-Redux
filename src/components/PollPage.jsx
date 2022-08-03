@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -7,6 +8,10 @@ const PollPage = (props) => {
   const navigate = useNavigate();
   const { avatarURL } = props.user;
   const { author, optionOne, optionTwo, id } = props.question;
+
+  if (!id) {
+    navigate('/notfound');
+  }
 
   const answeredOptionOne = optionOne.votes.includes(props.authedUser);
   const answeredOptionTwo = optionTwo.votes.includes(props.authedUser);
@@ -79,7 +84,6 @@ const PollPage = (props) => {
 };
 
 const mapStateToProps = ({ authedUser, questions, users }) => {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   const { id } = useParams();
   const question = questions[id];
   const user = Object.values(users).find((user) => user.id === question.author);
