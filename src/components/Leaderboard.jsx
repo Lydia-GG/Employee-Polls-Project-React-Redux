@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 const Leaderboard = (props) => {
+  console.log(props.totalActs);
+
   return (
     <div className="container leaderboard padding-top">
       <table>
@@ -13,7 +15,7 @@ const Leaderboard = (props) => {
             <th>Total</th>
           </tr>
         </thead>
-        {props.users.map((user) => (
+        {props.totalActs.map((user) => (
           <tbody key={user.id}>
             <tr>
               <td className="table-user">
@@ -40,7 +42,7 @@ const Leaderboard = (props) => {
 };
 
 const mapStateToProps = ({ users }) => {
-  users = Object.values(users).sort(
+  const totalActs = Object.values(users).sort(
     (a, b) =>
       Object.keys(b.answers).length +
       Object.keys(b.questions).length -
@@ -48,7 +50,9 @@ const mapStateToProps = ({ users }) => {
   );
 
   return {
-    users,
+    // users: Object.values(users).sort((a,b)=> (a.answers.length + a.questions.length) - (b.answers.length + b.questions.length)),
+    users: Object.values(users),
+    totalActs,
   };
 };
 

@@ -8,19 +8,21 @@ const Dashboard = (props) => {
       question.optionOne.votes.includes(props.authedUser.id) ||
       question.optionTwo.votes.includes(props.authedUser.id)
   );
+  console.log(answeredQuestions);
 
   const unAnsweredQuestions = props.questions.filter(
     (question) =>
       !question.optionOne.votes.includes(props.authedUser.id) &&
       !question.optionTwo.votes.includes(props.authedUser.id)
   );
+  console.log(unAnsweredQuestions);
 
   return (
     <div className="dashpoard-page center">
       <h1>Polls List</h1>
 
       <div className="poll-list">
-        <h2 className="poll-header">New Polls</h2>
+        <h2 className='poll-header'>New Polls</h2>
         <ul>
           {unAnsweredQuestions.map((question) => (
             <li key={question.id}>
@@ -30,7 +32,7 @@ const Dashboard = (props) => {
         </ul>
       </div>
       <div className="poll-list">
-        <h2 className="poll-header">Done</h2>
+        <h2 className='poll-header'>Done</h2>
         <ul>
           {answeredQuestions.map((question) => (
             <li key={question.id}>
