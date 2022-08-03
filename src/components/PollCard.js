@@ -11,7 +11,7 @@ const PollCard = ({ question }) => {
         <p className="timestamp">{formatDate(question.timestamp)}</p>
       </div>
       <hr />
-      <Link to={`/poll/${question.id}`} className="show">
+      <Link to={`questions/${question.id}`} className="show">
         Show
       </Link>
     </div>

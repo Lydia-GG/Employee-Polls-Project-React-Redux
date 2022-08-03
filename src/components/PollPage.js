@@ -85,8 +85,8 @@ const PollPage = (props) => {
 
 const mapStateToProps = ({ authedUser, questions, users }) => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  const { id } = useParams();
-  const question = questions[id];
+  const { question_id } = useParams();
+  const question = questions[question_id];
   const user = Object.values(users).find((user) => user.id === question.author);
   return {
     authedUser: authedUser.id,

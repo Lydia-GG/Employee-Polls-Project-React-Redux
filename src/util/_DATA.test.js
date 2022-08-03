@@ -1,4 +1,4 @@
-import { _saveQuestion, _saveQuestionAnswer } from '../util/_DATA';
+import { _saveQuestion, _saveQuestionAnswer } from './_DATA';
 
 describe('Data', () => {
   describe('_saveQuestion', () => {
