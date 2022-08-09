@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { handleLogin } from '../redux/actions/authedUser';
 import { useNavigate } from 'react-router-dom';
 import login from '../assets/login.png';
+import Button from './Button';
+import Input from './Input';
 
 const Login = (props) => {
   const navigate = useNavigate();
@@ -18,11 +20,12 @@ const Login = (props) => {
   return (
     <div>
       <h2>Employee Polls</h2>
-      <img className="poll-image" src={login} />
+      <img className="poll-image" src={login} alt="login" />
       <form className="login-form" onSubmit={handleSubmit}>
         <h3>Log In</h3>
         <label>User</label>
-        <input
+
+        <Input
           type="text"
           placeholder="username"
           className="login-input"
@@ -30,16 +33,20 @@ const Login = (props) => {
           onChange={(e) => setUsername(e.target.value)}
         />
         <label>Password</label>
-        <input
+
+        <Input
           type="password"
           placeholder="password"
           className="login-input"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button className="login-btn" type="submit">
-          Login
-        </button>
+        <Button
+          text="Login"
+          onClick={handleSubmit}
+          className="login-btn"
+          type="submit"
+        />
       </form>
       <div className="notes">
         <p>You can use:</p>
