@@ -1,17 +1,13 @@
-/* eslint-disable react-hooks/rules-of-hooks */
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { handleAddAnswer } from '../redux/actions/questions';
+import Button from './Button';
 
 const PollPage = (props) => {
   const navigate = useNavigate();
   const { avatarURL } = props.user;
   const { author, optionOne, optionTwo, id } = props.question;
-
-  if (!id) {
-    navigate('/notfound');
-  }
 
   const answeredOptionOne = optionOne.votes.includes(props.authedUser);
   const answeredOptionTwo = optionTwo.votes.includes(props.authedUser);
@@ -58,9 +54,11 @@ const PollPage = (props) => {
               </p>
             )}
           </div>
-          <button onClick={handleOptionOneClick} disabled={answeredPoll}>
-            Click
-          </button>
+          <Button
+            onClick={handleOptionOneClick}
+            disabled={answeredPoll}
+            text="Click"
+          />
         </div>
         <div className="info-element">
           <div className={answeredOptionTwo ? 'answeredOption' : ''}>
@@ -74,9 +72,11 @@ const PollPage = (props) => {
               </p>
             )}
           </div>
-          <button onClick={handleOptionTwoClick} disabled={answeredPoll}>
-            Click
-          </button>
+          <Button
+            onClick={handleOptionTwoClick}
+            disabled={answeredPoll}
+            text="Click"
+          />
         </div>
       </div>
     </div>
@@ -84,8 +84,9 @@ const PollPage = (props) => {
 };
 
 const mapStateToProps = ({ authedUser, questions, users }) => {
-  const { id } = useParams();
-  const question = questions[id];
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const { question_id } = useParams();
+  const question = questions[question_id];
   const user = Object.values(users).find((user) => user.id === question.author);
   return {
     authedUser: authedUser.id,
