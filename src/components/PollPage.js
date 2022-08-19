@@ -1,13 +1,29 @@
 import React from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { handleAddAnswer } from '../redux/actions/questions';
 import Button from './Button';
+import NotFound from './NotFound';
+
+const withRouter = (Component) => {
+  const ComponentWithRouterProp = (props) => {
+    let location = useLocation();
+    let navigate = useNavigate();
+    let params = useParams();
+    return <Component {...props} router={{ location, navigate, params }} />;
+  };
+
+  return ComponentWithRouterProp;
+};
 
 const PollPage = (props) => {
   const navigate = useNavigate();
   const { avatarURL } = props.user;
   const { author, optionOne, optionTwo, id } = props.question;
+
+  if (!id) {
+    return <NotFound />;
+  }
 
   const answeredOptionOne = optionOne.votes.includes(props.authedUser);
   const answeredOptionTwo = optionTwo.votes.includes(props.authedUser);
@@ -25,13 +41,10 @@ const PollPage = (props) => {
     e.preventDefault();
 
     props.dispatch(handleAddAnswer(id, 'optionOne'));
-
-    navigate('/');
   };
   const handleOptionTwoClick = (e) => {
     e.preventDefault();
     props.dispatch(handleAddAnswer(id, 'optionTwo'));
-    navigate('/');
   };
 
   return (
@@ -83,9 +96,9 @@ const PollPage = (props) => {
   );
 };
 
-const mapStateToProps = ({ authedUser, questions, users }) => {
+const mapStateToProps = ({ authedUser, questions, users }, props) => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  const { question_id } = useParams();
+  const { question_id } = props.router.params;
   const question = questions[question_id];
   const user = Object.values(users).find((user) => user.id === question.author);
   return {
@@ -95,4 +108,4 @@ const mapStateToProps = ({ authedUser, questions, users }) => {
   };
 };
 
-export default connect(mapStateToProps)(PollPage);
+export default withRouter(connect(mapStateToProps)(PollPage));

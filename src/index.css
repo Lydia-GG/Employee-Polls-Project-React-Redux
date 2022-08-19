@@ -39,12 +39,15 @@ li {
 
 /* navbar */
 .nav {
+  border: 1px solid green;
+  margin-bottom: 200px;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   background-color: #fff;
   box-shadow: 0px 0px 15px 1px #eee;
+  z-index: 1;
 }
 
 .nav .nav-content {
@@ -85,7 +88,6 @@ li {
   font-weight: bold;
 }
 
-
 /* login page */
 .poll-image {
   width: 200px;
@@ -95,7 +97,7 @@ li {
 }
 
 .login-form {
-  margin: 30px auto;
+  margin: 20px auto;
 }
 
 .login-input {
@@ -107,7 +109,7 @@ li {
 }
 
 .login-input::placeholder {
-  color: #999
+  color: #999;
 }
 
 .login-btn {
@@ -129,16 +131,49 @@ li {
   letter-spacing: 1px;
 }
 
-
 /* dashboard page */
-.dashpoard-page {
-  padding-top: 150px;
+.dashboard-page {
+  margin-top: 100px;
+  border: 1px solid transparent;
+}
+
+/* .dashboard-container {
+  width: 80%;
+  position: relative;
+  margin: 25px auto;
+  padding: 5px;
+  border: 2px solid rgb(58, 205, 58);
+  border-radius: 10px;
+} */
+
+.btn-box {
+  width: 45%;
+  margin: 30px auto;
+  position: relative;
+  box-shadow: 0 0 6px -2px gray;
+  border-radius: 30px;
+}
+
+.toggle-btn {
+  width: 50%;
+  padding: 10px 0;
+  cursor: pointer;
+  border: 0;
+  outline: none;
+  position: relative;
+  background-color: transparent;
+}
+
+.toggle-btn.clicked {
+  background-color: rgb(58, 205, 58);
+  border-radius: 30px;
+  color: white;
 }
 
 .poll-list {
   border: 1px solid #ddd;
   margin: 20px auto 50px;
-  width: 80%;
+  width: 95%;
 }
 
 .poll-list .poll-header {
@@ -190,10 +225,9 @@ li {
   color: rgb(65, 191, 65);
 }
 
-
 /* ?? */
 .tweet hr {
-  border: none ;
+  border: none;
   border-top: 1px solid #eee;
 }
 
@@ -219,8 +253,6 @@ li {
   font-weight: 700;
   border-width: 2px;
 }
-
-
 
 /* Hacky but less typing in the video */
 .tweet-info > div > span:first-child {
@@ -296,7 +328,6 @@ li {
   color: #c3392a;
 }
 
-
 /* pollPage */
 .poll-page {
   padding-top: 150px;
@@ -332,14 +363,14 @@ li {
   font-weight: bold;
 }
 
-.poll-page .info-element .percentage .votes{
+.poll-page .info-element .percentage .votes {
   color: #333;
-  margin-right: 10px; 
+  margin-right: 10px;
 }
 
-.poll-page .info-element .percentage .votes{
+.poll-page .info-element .percentage .votes {
   color: #999;
-  margin-right: 10px; 
+  margin-right: 10px;
 }
 
 .poll-page .info-element .percentage {
@@ -361,7 +392,6 @@ li {
   border: 1px solid rgb(244, 233, 219);
 }
 
-
 /* leaderboard */
 .leaderboard {
   padding-top: 150px;
@@ -377,7 +407,9 @@ li {
   background-color: #eee;
 }
 
-.leaderboard table, th, td {
+.leaderboard table,
+th,
+td {
   padding-left: 20px;
   border: 1px solid #333;
   border-collapse: collapse;
@@ -409,9 +441,8 @@ li {
   position: absolute;
   margin-top: 50px;
   font-size: 14px;
-  color: #999
+  color: #999;
 }
-
 
 /* newPoll page */
 .new-poll {

@@ -30,6 +30,7 @@ function App(props) {
               </PrivateRoute>
             }
           ></Route>
+
           <Route
             path="/leaderboard"
             element={

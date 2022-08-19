@@ -1,52 +1,41 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import PollCard from './PollCard';
+import Answered from './Answered';
+import Unanswered from './Unanswered';
+import Button from './Button';
 
-const Dashboard = (props) => {
-  const answeredQuestions = props.questions.filter(
-    (question) =>
-      question.optionOne.votes.includes(props.authedUser.id) ||
-      question.optionTwo.votes.includes(props.authedUser.id)
-  );
+const Dashboard = () => {
+  const [active, setActive] = useState(false);
 
-  const unAnsweredQuestions = props.questions.filter(
-    (question) =>
-      !question.optionOne.votes.includes(props.authedUser.id) &&
-      !question.optionTwo.votes.includes(props.authedUser.id)
-  );
+  const handleLogin = () => {
+    setActive(false);
+  };
+  const handleRegister = () => {
+    setActive(true);
+  };
 
   return (
-    <div className="dashpoard-page center">
-      <h1>Polls List</h1>
-
-      <div className="poll-list">
-        <h2 className="poll-header">New Polls</h2>
-        <ul>
-          {unAnsweredQuestions.map((question) => (
-            <li key={question.id}>
-              <PollCard question={question} />
-            </li>
-          ))}
-        </ul>
+    <>
+      <div className="dashboard-page center"></div>
+      <div className="dashboard-container">
+        <div className="btn-box">
+          <Button
+            className={active ? 'toggle-btn' : 'toggle-btn clicked'}
+            onClick={handleLogin}
+            text={'New Polls'}
+          />
+          <Button
+            className={active ? 'toggle-btn clicked' : 'toggle-btn'}
+            onClick={handleRegister}
+            text={'Done'}
+          />
+        </div>
+        <div className="poll-list">
+          {active ? <Answered /> : <Unanswered />}
+        </div>
       </div>
-      <div className="poll-list">
-        <h2 className="poll-header">Done</h2>
-        <ul>
-          {answeredQuestions.map((question) => (
-            <li key={question.id}>
-              <PollCard question={question} />
-            </li>
-          ))}
-        </ul>
-      </div>
-    </div>
+    </>
   );
 };
 
-const mapStateToProps = ({ authedUser, questions, users }) => ({
-  authedUser,
-  questions: Object.values(questions).sort((a, b) => b.timestamp - a.timestamp),
-  users,
-});
-
-export default connect(mapStateToProps)(Dashboard);
+export default connect()(Dashboard);

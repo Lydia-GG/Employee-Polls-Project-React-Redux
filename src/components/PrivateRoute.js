@@ -1,9 +1,15 @@
+//After npm run test please enter a to see all test (13 tests)
 import React from 'react';
 import { connect } from 'react-redux';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useLocation } from 'react-router-dom';
 
 const PrivateRoute = ({ authedUser, children }) => {
-  return authedUser ? children : <Navigate to="/login" replace />;
+  const location = useLocation();
+  return authedUser ? (
+    children
+  ) : (
+    <Navigate to={`/login?redirectTo=${location}`} />
+  );
 };
 
 const mapStateToProps = ({ authedUser }) => ({
