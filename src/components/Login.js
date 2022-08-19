@@ -7,6 +7,7 @@ import Button from './Button';
 import Input from './Input';
 
 const Login = (props) => {
+  console.log(props.location);
   const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -14,7 +15,7 @@ const Login = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     props.dispatch(handleLogin(username, password));
-    navigate('/');
+    navigate(-1);
   };
 
   return (
