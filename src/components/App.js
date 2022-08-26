@@ -7,7 +7,7 @@ import Nav from './Nav';
 import NewPollPage from './NewPollPage';
 import PollPage from './PollPage';
 import Leaderboard from './Leaderboard';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import NotFound from './NotFound';
 import PrivateRoute from './PrivateRoute';
 
@@ -56,6 +56,7 @@ function App(props) {
             }
           ></Route>
           <Route path="*" element={<NotFound />}></Route>
+          <Route path="/404" element={<NotFound />}></Route>
         </Routes>
       </>
     </div>
