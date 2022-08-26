@@ -1,21 +1,21 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { handleLogin } from '../redux/actions/authedUser';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import login from '../assets/login.png';
 import Button from './Button';
 import Input from './Input';
 
 const Login = (props) => {
-  console.log(props.location);
   const navigate = useNavigate();
+  const location = useLocation();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
     props.dispatch(handleLogin(username, password));
-    navigate(-1);
+    navigate(location.state?.path || '/');
   };
 
   return (
