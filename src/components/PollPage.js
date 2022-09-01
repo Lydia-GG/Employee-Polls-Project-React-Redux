@@ -17,13 +17,12 @@ const withRouter = (Component) => {
 };
 
 const PollPage = (props) => {
-  const navigate = useNavigate();
-  const { avatarURL } = props.user;
-  const { author, optionOne, optionTwo, id } = props.question;
-
-  if (!id) {
+  if (!props.question) {
     return <NotFound />;
   }
+
+  const { avatarURL } = props.user;
+  const { author, optionOne, optionTwo, id } = props.question;
 
   const answeredOptionOne = optionOne.votes.includes(props.authedUser);
   const answeredOptionTwo = optionTwo.votes.includes(props.authedUser);
@@ -100,11 +99,13 @@ const mapStateToProps = ({ authedUser, questions, users }, props) => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const { question_id } = props.router.params;
   const question = questions[question_id];
-  const user = Object.values(users).find((user) => user.id === question.author);
+  if (!question) {
+    return <NotFound />;
+  }
   return {
     authedUser: authedUser.id,
     question,
-    user,
+    user: Object.values(users).find((user) => user.id === question.author),
   };
 };
 
