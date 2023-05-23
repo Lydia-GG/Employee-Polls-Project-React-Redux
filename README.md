@@ -23,7 +23,7 @@ Launches the test runner in the interactive watch mode.
 
 ### Application
 
-##### Build using
+##### Build using:
 
 - React .
 - React-Redux
