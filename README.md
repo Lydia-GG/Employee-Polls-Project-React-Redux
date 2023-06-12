@@ -26,6 +26,6 @@ Launches the test runner in the interactive watch mode.
 ##### Build using:
 
 - React .
-- React-Redux
+- React-Redux.
 - React Hooks(useState, useEffect).
 - React testing library and Jest for testing.
