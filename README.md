@@ -8,9 +8,9 @@ Employee Polls Project is a part of Software Engineer Nanodegree at Udacity. The
 
 In the project directory, you can run:
 
-##### `npm install`
-
 To install all Dependencies and devDependencies:
+
+##### `npm install`
 
 ##### `npm start`
 
